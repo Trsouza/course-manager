@@ -1,0 +1,50 @@
+<h2> Informações do Curso</h2>
+
+<form #courseForm="ngForm" *ngIf="course">
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Nome</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="course.name" name="name" class="form-control" required #courseName="ngModel"
+                [ngClass]="{'is-invalid': courseName.invalid}">
+            <!-- #courseForm="ngModel"   variavel de template , com o ngClass eu posso passar classes dinamicamente p/ a propriedade, primeiro parametro classe e o segundo a condição -->
+            <div class="invalid-feedback">
+                <span>Nome inválido</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Preço</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="course.price" name="price" class="form-control" required type="number"
+                #coursePrice="ngModel" [ngClass]="{'is-invalid': coursePrice.invalid}">
+            <div class="invalid-feedback">
+                <span>Preço inválido</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Classifiação</label>
+        <div class="col-sm-10">
+            <input [(ngModel)]="course.rating" name="rating" class="form-control" required type="number"
+                #courseRating="ngModel" [ngClass]="{'is-invalid': courseRating.invalid}">
+            <div class="invalid-feedback">
+                <span>Classificação inválida</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Descrição</label>
+        <div class="col-sm-10">
+            <textarea [(ngModel)]="course.description" name="descricao" class="form-control" required 
+                #courseDescription="ngModel" [ngClass]="{'is-invalid': courseDescription.invalid}"></textarea>
+            <div class="invalid-feedback">
+                <span>Descrição inválida</span>
+            </div>
+        </div>
+    </div>
+    <button [routerLink]="['/courses/']" class="btn btn-secondary mr-2" type="button">Voltar</button>
+    <button [disabled]="courseForm.invalid" class="btn btn-primary" (click)="save()" type="button">Salvar</button>
+</form>

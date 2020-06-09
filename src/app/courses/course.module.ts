@@ -1,0 +1,35 @@
+import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CourseListComponent } from './course-list.component';
+import { CourseInfoComponent } from './course-info.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { StarModule } from '../shared/component/star/star.module';
+import { AppPipeModule } from '../shared/pipe/app-pipe.module';
+
+@NgModule({
+    declarations: [
+        CourseListComponent,
+        CourseInfoComponent
+    ],
+    imports: [
+        AppPipeModule,
+        StarModule,
+        FormsModule,
+        CommonModule, //Referente  modulos nativos do angular, com os pipes padrões
+        RouterModule.forChild([
+            {
+                path: 'courses', component: CourseListComponent
+            },
+            {
+                path: 'courses/info/:id', component: CourseInfoComponent
+            },
+
+        ])
+    ]
+})
+
+
+export class CourseModule {
+
+}
