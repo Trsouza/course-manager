@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './component/nav-bar/nav-bar.component';
+import { Error404Component } from './component/error-404/error-404.component';
 
 @NgModule({
     declarations: [
-        NavBarComponent
+        NavBarComponent,
+        Error404Component
     ],
     imports: [
-        RouterModule
+        RouterModule.forChild([
+            {
+                path: '**', component: Error404Component /* ** Serve para quando não é encontrado uma rota */
+            }
+
+        ]),
     ],
     exports: [
         NavBarComponent

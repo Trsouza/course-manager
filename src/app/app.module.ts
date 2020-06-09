@@ -1,5 +1,4 @@
 import { CoreModule } from './core/core.module';
-import { Error404Component } from './error-404/error-404.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -10,8 +9,7 @@ import { CourseModule } from './courses/course.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    Error404Component,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -23,10 +21,6 @@ import { CourseModule } from './courses/course.module';
       {
         path:'', redirectTo:'courses',pathMatch:'full'
       },
-      {
-        path: '**', component: Error404Component /* ** Serve para quando não é encontrado uma rota */
-      }
-
     ])
   ],
   providers: [],
